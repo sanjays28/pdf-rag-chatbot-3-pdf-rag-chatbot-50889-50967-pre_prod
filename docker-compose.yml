@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  pdf-rag-chatbot:
+    build:
+      context: ./pdf_rag_chatbot
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./pdf_rag_chatbot:/app
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=app.py
+    command: python app.py

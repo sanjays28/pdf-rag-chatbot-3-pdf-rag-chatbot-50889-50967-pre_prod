@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF RAG Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PDF RAG Chatbot</h1>
+        </header>
+        
+        <main>
+            <section id="upload-section" class="section">
+                <div class="upload-container" id="drop-zone">
+                    <div class="upload-content">
+                        <img src="{{ url_for('static', filename='images/upload.svg') }}" alt="Upload" class="upload-icon">
+                        <p>Drag and drop your PDF file here or</p>
+                        <input type="file" id="file-input" accept=".pdf" hidden>
+                        <button id="upload-btn" class="btn primary">Choose File</button>
+                    </div>
+                    <div id="upload-status" class="status-message"></div>
+                </div>
+            </section>
+
+            <section id="chat-section" class="section hidden">
+                <div class="chat-container">
+                    <div id="chat-messages" class="messages">
+                        <div class="message system">
+                            Hello! I'm ready to help you with questions about your PDF document.
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <textarea id="user-input" placeholder="Type your message here..." rows="1"></textarea>
+                        <button id="send-btn" class="btn primary">Send</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="error-modal" class="modal">
+            <div class="modal-content">
+                <h2>Error</h2>
+                <p id="error-message"></p>
+                <button class="btn" onclick="closeErrorModal()">Close</button>
+            </div>
+        </div>
+
+        <div id="loading-overlay" class="overlay hidden">
+            <div class="spinner"></div>
+            <p id="loading-text">Processing...</p>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
